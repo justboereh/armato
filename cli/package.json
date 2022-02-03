@@ -1,0 +1,21 @@
+{
+  "name": "armato",
+  "version": "1.0.2021",
+  "description": "A roblox management tool",
+  "main": "src/index.js",
+  "bin": {
+    "myapp": "src/index.js"
+  },
+  "scripts": {
+    "init": "cd test && node ../ init",
+    "serve": "cd test && node ../ serve"
+  },
+  "author": "justboereh",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "express": "^4.17.2",
+    "lodash": "^4.17.21",
+    "portfinder": "^1.0.28"
+  }
+}
