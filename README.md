@@ -1,5 +1,5 @@
 
-<p  align="center"><img  src="https://i.imgur.com/Mojqysc.png" /></p>
+<p  align="center"><img  src="https://i.imgur.com/ljc51q9.png" /></p>
 
 You know Rojo? Yeah, you can say ARMATO is similar to that. Don't compare ARMATO to Rojo though, only I can do that*.
 
