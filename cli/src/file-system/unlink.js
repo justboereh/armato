@@ -1,25 +1,25 @@
-const { parse } = require('path')
+const { parse, dirname } = require('path')
 
 const slash = require('../slash')
-const { get, remove } = require('../tree')
+const { get, remove, update } = require('../tree')
 
-module.exports = (dirPath, stat, rename) => {
-	console.log(dirPath, stat, rename, get())
-	/*
+module.exports = (dirPath) => {
   let { dir, name, ext } = parse(dirPath.replace(slash(process.cwd()), ''))
 
-  const item = get({ Path: slash(dir), Name: name, ClassName: ext.substr(1) })
-  console.log(item, slash(dir), name, ext)
+  if (name.substr(0, 5) !== 'index') {
+    const item = get({ Path: slash(dir), Name: name, ClassName: ext.substr(1) })
 
-  if (item) {
-    try {
-      itemJSExt = require('../extensions/' + ext.substr(1))
-    } catch {
-      itemJSExt = require('../extensions/_default')
-    }
+    if (!item) return
 
-    if (itemJSExt) {
-      remove(item[0].index)
-    }
-  }*/
+    remove(item[0].index)
+
+    return
+  }
+
+  const item = get({ Path: dirname(dir), Name: dir.match(/\w+$/g)[0] })
+
+  if (!item) return
+
+  update(item[0].index, { Path: dirname(dir), Name: dir.match(/\w+$/g)[0] })
+  console.log({ Path: dirname(dir), Name: dir.match(/\w+$/g)[0] })
 }

@@ -1,14 +1,8 @@
 <p align="center"><img src="https://i.imgur.com/Mojqysc.png" /></p>
 
-# ARMATO
+# ARMATO CLI
 
 This is a command line interface tool for ARMATO. Initialize or start ARMATO server to sync with Roblox game project.
-
-## Features
-
-- Two way sync from Roblox to local files and vice versa
-- Sync in real time
-- Work
 
 ## Get Started
 

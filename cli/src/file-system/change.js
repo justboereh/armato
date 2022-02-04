@@ -7,7 +7,7 @@ module.exports = (dirPath) => {
   let { dir, name, ext } = parse(dirPath.replace(slash(process.cwd()), ''))
 
   const item = get({ Path: slash(dir), Name: name, ClassName: ext.substr(1) })
-  console.log(item, slash(dir), name, ext)
+  // console.log(item, slash(dir), name, ext)
 
   if (item) {
     try {

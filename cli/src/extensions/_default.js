@@ -1,6 +1,7 @@
 const { readFileSync } = require('fs')
 
 const slash = require('../slash')
+
 module.exports = ({ relativePath, dirPath, name, ext }, isIndex) => {
   const fileData = readFileSync(
     `${dirPath}/${isIndex ? 'index' : name}${ext}`,
@@ -10,7 +11,7 @@ module.exports = ({ relativePath, dirPath, name, ext }, isIndex) => {
   )
 
   const toReturn = {
-    Path: relativePath,
+    Path: slash(relativePath),
     Name: name,
     ClassName: ext.substr(1),
   }

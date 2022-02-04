@@ -1,9 +1,22 @@
 const { parse } = require('path')
 const { readdirSync } = require('fs')
 
+const { isEqual } = require('lodash')
+
 const slash = require('../slash')
 const { push, get } = require('../tree')
 const logs = require('../logs')
+
+const ignoreTreeItems = [
+  {
+    Name: 'StarterCharacterScripts',
+    Path: 'StarterPlayer',
+  },
+  {
+    Name: 'StarterPlayerScripts',
+    Path: 'StarterPlayer',
+  },
+]
 
 const isDirectory = (path) => {
   try {
@@ -12,19 +25,23 @@ const isDirectory = (path) => {
 }
 
 module.exports = (dirPath) => {
-  console.log(logs.get())
   if (dirPath === '') return
   const { dir, name } = parse(dirPath.replace(slash(process.cwd()), ''))
+
+  if (dir === '') return
 
   for (const item of readdirSync(dirPath)) {
     if (
       !isDirectory(dirPath + '/' + item) &&
       item.includes('index') &&
-      !item.includes('_index')
+      !item.includes('_index') &&
+      dir !== ''
     ) {
       const { ext } = parse(item)
 
-      if (!get({ Path: '/' + dir, Name: name, ClassName: ext.substr(1) })) {
+      if (
+        !get({ Path: '/' + slash(dir), Name: name, ClassName: ext.substr(1) })
+      ) {
         let itemJSExt
 
         try {
@@ -52,7 +69,25 @@ module.exports = (dirPath) => {
     }
   }
 
-  if (!get({ ...(dir !== '' && { Path: dir }), Name: name })) {
-    push({ ...(dir !== '' && { Path: dir }), Name: name })
+  let ignoreThis = false
+
+  for (const ignoreItem of ignoreTreeItems) {
+    if (
+      isEqual(ignoreItem, {
+        ...(dir !== '' && { Path: slash(dir) }),
+        Name: name,
+      })
+    ) {
+      ignoreThis = true
+
+      continue
+    }
+  }
+
+  if (
+    !ignoreThis &&
+    !get({ ...(dir !== '' && { Path: slash(dir) }), Name: name })
+  ) {
+    push({ ...(dir !== '' && { Path: slash(dir) }), Name: name })
   }
 }

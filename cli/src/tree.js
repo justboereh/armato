@@ -41,7 +41,10 @@ exports.get = (keysValues) => {
 exports.update = (index, value) => {
   logs.insert({
     intent: 'change',
-    data: value,
+    data: {
+      new: value,
+      old: tree[index],
+    },
   })
 
   tree[index] = value

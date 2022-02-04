@@ -4,6 +4,9 @@ const slash = require('../slash')
 const { get, remove } = require('../tree')
 const logs = require('../logs')
 
-module.exports = (dirPath, stat, rename) => {
-  console.log('		+ ', logs.get())
+module.exports = (dirPath) => {
+  const { dir, name } = parse(dirPath.replace(slash(process.cwd()), ''))
+
+  if (dir === '') return
+  // console.log('		+ ', logs.get())
 }
