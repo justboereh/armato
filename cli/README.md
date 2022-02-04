@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/ljc51q9.png" /></p>
+<p align="center"><img src="https://i.imgur.com/WqwkPNa.png" /></p>
 
 # ARMATO CLI
 
