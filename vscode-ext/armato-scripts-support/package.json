@@ -1,0 +1,25 @@
+{
+    "name": "armato-scripts-support",
+    "displayName": "ARMATO Scripts Support",
+    "description": "Roblox scripts instances support for ARMATO",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.64.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "armato",
+            "aliases": ["ARMATO Scripts", "armato"],
+            "extensions": [".LocalScript",".Script",".ModuleScript"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "armato",
+            "scopeName": "scource.scripts",
+            "path": "./syntaxes/armato.tmLanguage.json"
+        }]
+    }
+}

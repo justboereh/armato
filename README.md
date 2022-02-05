@@ -1,7 +1,7 @@
 
 <p  align="center"><img  src="https://i.imgur.com/quDuxHo.png" /></p>
 
-You know Rojo? Yeah, you can say ARMATO is similar to that. Don't compare ARMATO to Rojo though, only I can do that*.
+You know Rojo? Yeah, you could say ARMATO is similar to that. Don't compare ARMATO to Rojo though. Only I can do that*.
 
 ## Features
 - Two way sync from Roblox to local files and vice versa
@@ -21,7 +21,7 @@ You know Rojo? Yeah, you can say ARMATO is similar to that. Don't compare ARMATO
 - `armato init [name] -c`
 - `armato serve`
 
-`[name]` is optional. By providing a name, ARMATO will create a new directory else ARMATO will use the current directory's name.
+`[name]` is optional. By providing a name, ARMATO will create a new directory, else ARMATO will use the current directory's name.
 
 ## Notes
 - I do not know how to use : and ;
