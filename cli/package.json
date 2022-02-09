@@ -3,12 +3,11 @@
   "version": "1.0.2021",
   "description": "A roblox management tool",
   "main": "src/index.js",
-  "bin": {
-    "myapp": "src/index.js"
-  },
+  "bin": "src/index.js",
   "scripts": {
     "init": "cd test && node ../ init",
-    "serve": "cd test && node ../ serve"
+    "serve": "cd test && node ../ serve",
+    "pkg": "pkg --compress Brotli --out-path dist ."
   },
   "author": "justboereh",
   "license": "MIT",

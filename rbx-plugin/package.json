@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "init": "cd src && node ../cli init",
+    "serve": "cd src && node ../cli serve"
+  }
+}

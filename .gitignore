@@ -1,4 +1,6 @@
-cli/node_modules
-cli/package-lock.json
-cli/test
-cli/.prettierrc.json
+node_modules
+package-lock.json
+test
+.prettierrc.json
+dist
+cli/bin

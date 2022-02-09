@@ -17,10 +17,12 @@ module.exports = ({ relativePath, dirPath, name, ext }, isIndex) => {
   }
 
   for (const line of fileData.split(/\r?\n/)) {
-    if (!line.match(/[\s+][^.]+/g) || !line.match(/[\w]+/g)) continue
+    const indexOfEqual = line.indexOf('=')
 
-    const value = line.match(/[\s+][^.]+/g)[0].trimStart()
-    const prop = line.match(/[\w]+/g)[0]
+    if (!indexOfEqual) continue
+
+    const prop = line.split(indexOfEqual)[0].trim()
+    const value = line.split(indexOfEqual)[0].trimStart()
 
     toReturn[prop] = value
   }

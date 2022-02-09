@@ -13,13 +13,41 @@ const ignored = [slash(process.cwd()) + '/armato.config.json']
 let timeout = Date.now()
 
 module.exports = () => {
-  chokidar.watch('.', { cwd: process.cwd(), ignored }).on('add', fsAdd)
-  chokidar.watch('.', { cwd: process.cwd(), ignored }).on('change', fsChange)
-  chokidar.watch('.', { cwd: process.cwd(), ignored }).on('unlink', fsUnlink)
+  chokidar
+    .watch('.', {
+      cwd: process.cwd(),
+      ignored,
+      useFsEvents: true,
+    })
+    .on('add', fsAdd)
+  chokidar
+    .watch('.', {
+      cwd: process.cwd(),
+      ignored,
+      useFsEvents: true,
+    })
+    .on('change', fsChange)
+  chokidar
+    .watch('.', {
+      cwd: process.cwd(),
+      ignored,
+      useFsEvents: true,
+    })
+    .on('unlink', fsUnlink)
 
   // DIRECTORY
-  chokidar.watch('.', { cwd: process.cwd(), ignored }).on('addDir', fsAddDir)
   chokidar
-    .watch('.', { cwd: process.cwd(), ignored })
+    .watch('.', {
+      cwd: process.cwd(),
+      ignored,
+      useFsEvents: true,
+    })
+    .on('addDir', fsAddDir)
+  chokidar
+    .watch('.', {
+      cwd: process.cwd(),
+      ignored,
+      useFsEvents: true,
+    })
     .on('unlinkDir', fsUnlinkDir)
 }
