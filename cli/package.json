@@ -15,6 +15,7 @@
     "chokidar": "^3.5.3",
     "express": "^4.17.2",
     "lodash": "^4.17.21",
-    "portfinder": "^1.0.28"
+    "portfinder": "^1.0.28",
+    "yaml": "^1.10.2"
   }
 }

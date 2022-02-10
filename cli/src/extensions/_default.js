@@ -1,4 +1,5 @@
 const { readFileSync } = require('fs')
+const { parse } = require('yaml')
 
 const slash = require('../slash')
 
@@ -16,15 +17,12 @@ module.exports = ({ relativePath, dirPath, name, ext }, isIndex) => {
     ClassName: ext.substr(1),
   }
 
-  for (const line of fileData.split(/\r?\n/)) {
-    const indexOfEqual = line.indexOf('=')
+  for (const prop in parse(fileData)) {
+    if (parse(fileData).hasOwnProperty(prop)) {
+      const value = parse(fileData)[prop]
 
-    if (!indexOfEqual) continue
-
-    const prop = line.split(indexOfEqual)[0].trim()
-    const value = line.split(indexOfEqual)[0].trimStart()
-
-    toReturn[prop] = value
+      toReturn[prop] = value
+    }
   }
 
   return toReturn
