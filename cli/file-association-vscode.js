@@ -581,26 +581,27 @@ createInterface(process.stdin, process.stdout).question(
   Remove file associations for Roblox instances (y/N)? `,
   (answer) => {
     if (['n', ''].includes(answer.trim().toLowerCase())) {
+      for (const ext of instancesExt) {
+        settings['files.associations'][ext] = 'json'
+      }
+
       for (const ext of scriptsExt) {
         settings['files.associations'][ext] = 'lua'
       }
 
-      for (const ext of instancesExt) {
-        settings['files.associations'][ext] = 'yml'
-      }
 
-      writeFileSync(a, JSON.stringify(settings))
+      writeFileSync(filepath, JSON.stringify(settings))
 
       process.exit()
     }
 
-    for (const ext of [...instancesExt, ...scriptsExt]) {
+    for (const ext of instancesExt) {
       if (settings['files.associations'][ext]) {
         delete settings['files.associations'][ext]
       }
     }
 
-    writeFileSync(a, JSON.stringify(settings))
+    writeFileSync(filepath, JSON.stringify(settings))
 
     process.exit()
   }
