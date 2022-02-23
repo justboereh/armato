@@ -1,6 +1,12 @@
 const { parse } = require('path')
 const { parseString } = require('xml2js')
-const { readFileSync, existsSync, mkdirSync, writeFileSync } = require('fs')
+const {
+  readFileSync,
+  existsSync,
+  mkdirSync,
+  writeFileSync,
+  readdirSync,
+} = require('fs')
 const nativeDialog = require('native-file-dialog')
 
 const doItems = require('./items')
@@ -8,6 +14,18 @@ const slash = require('../slash')
 
 module.exports = () => {
   const { ext } = parse(process.argv[2])
+
+  if (process.argv.some((x) => ['-c, --cleardir'].includes(x))) {
+    const readdirSync = readdir(directory, (err, files) => {
+      if (err) throw err
+
+      for (const file of files) {
+        fs.unlink(path.join(directory, file), (err) => {
+          if (err) throw err
+        })
+      }
+    })
+  }
 
   if (ext === '.rbxlx') {
     let filedata = readFileSync(process.argv[2], {
