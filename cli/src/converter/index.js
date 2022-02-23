@@ -15,6 +15,8 @@ const slash = require('../slash')
 module.exports = () => {
   const { ext } = parse(process.argv[2])
 
+  // do this
+  /*
   if (process.argv.some((x) => ['-c, --cleardir'].includes(x))) {
     const readdirSync = readdir(directory, (err, files) => {
       if (err) throw err
@@ -25,8 +27,7 @@ module.exports = () => {
         })
       }
     })
-  }
-
+  }*/
   if (ext === '.rbxlx') {
     let filedata = readFileSync(process.argv[2], {
       encoding: 'utf8',
