@@ -3,7 +3,7 @@ const { existsSync, writeFileSync, mkdirSync } = require('fs')
 
 const server = require('./server')
 const { startingDirectory, startingFiles } = require('./starting')
-const converter = require('./converter')
+const converter = require('./converter/index')
 
 if (process.argv[2] === 'init') {
   const initProject = (projectpath, toCD) => {
@@ -46,5 +46,8 @@ if (process.argv[2] === 'init') {
 }
 
 if (process.argv[2] === 'serve') server()
+
+if (process.argv[2] === 'build') {
+}
 
 if (existsSync(process.argv[2])) converter()

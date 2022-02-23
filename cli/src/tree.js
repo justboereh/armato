@@ -50,13 +50,15 @@ exports.update = (index, value) => {
   tree[index] = value
 }
 
-exports.push = (value) => {
-  logs.insert({
-    intent: 'add',
-    data: value,
-  })
+exports.push = (values) => {
+  for (const item of values) {
+    logs.insert({
+      intent: 'add',
+      data: item,
+    })
 
-  tree.push(value)
+    tree.push(item)
+  }
 }
 
 exports.remove = (index) => {
