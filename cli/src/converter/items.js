@@ -31,7 +31,9 @@ module.exports = doitems = (items, path) => {
           })
         )
 
-        if (typeof filedata === 'object') filedata = [filedata]
+        if (!(filedata instanceof Array)) {
+          filedata = [filedata]
+        }
 
         filedata.push(props)
 

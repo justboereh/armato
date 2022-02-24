@@ -7,7 +7,7 @@
   "scripts": {
     "init": "cd test && node ../ init",
     "serve": "cd test && node ../ serve",
-    "con": "node . 'C:/Users/boere/Documents/Visual Studio Code Projects/armato/cli/dist/Classic Baseplate.rbxlx'",
+    "con": "node . \"C:/Users/boere/Documents/Visual Studio Code Projects/armato/cli/dist/Classic Baseplate.rbxlx\"",
     "pkg": "pkg --compress Brotli --out-path dist ."
   },
   "author": "justboereh",

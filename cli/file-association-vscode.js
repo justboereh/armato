@@ -577,8 +577,7 @@ if (!existsSync(filepath)) process.exit()
 const settings = require(filepath)
 
 createInterface(process.stdin, process.stdout).question(
-  `
-  Remove file associations for Roblox instances (y/N)? `,
+  '\n\tRemove file associations for Roblox instances (y/N)?',
   (answer) => {
     if (['n', ''].includes(answer.trim().toLowerCase())) {
       for (const ext of instancesExt) {
@@ -588,7 +587,6 @@ createInterface(process.stdin, process.stdout).question(
       for (const ext of scriptsExt) {
         settings['files.associations'][ext] = 'lua'
       }
-
 
       writeFileSync(filepath, JSON.stringify(settings))
 

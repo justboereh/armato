@@ -1,4 +1,5 @@
 const { parse } = require('path')
+const { createInterface } = require('readline')
 const { parseString } = require('xml2js')
 const {
   readFileSync,
@@ -6,6 +7,7 @@ const {
   mkdirSync,
   writeFileSync,
   readdirSync,
+  unlinkSync,
 } = require('fs')
 const nativeDialog = require('native-file-dialog')
 
@@ -15,19 +17,17 @@ const slash = require('../slash')
 module.exports = () => {
   const { ext } = parse(process.argv[2])
 
-  // do this
-  /*
+  // clear directory if user has flags
   if (process.argv.some((x) => ['-c, --cleardir'].includes(x))) {
-    const readdirSync = readdir(directory, (err, files) => {
-      if (err) throw err
+    const files = readdirSync(folderPath)
 
-      for (const file of files) {
-        fs.unlink(path.join(directory, file), (err) => {
-          if (err) throw err
-        })
-      }
-    })
-  }*/
+    // loop through files and remove
+    for (const file of files) {
+      fs.unlinkSync(`${folderPath}/${file}`)
+    }
+  }
+
+  // if ext of file is .rbxlx
   if (ext === '.rbxlx') {
     let filedata = readFileSync(process.argv[2], {
       encoding: 'utf8',
@@ -46,25 +46,45 @@ module.exports = () => {
 
       if (!existsSync(folderPath)) process.exit()
 
-      writeFileSync(`${folderPath}/armato.config.json`, '{}')
+      function main() {
+        writeFileSync(`${folderPath}/armato.config.json`, '{}')
 
-      for (const item of result.roblox.Item) {
-        if (
-          !process.argv.some((x) =>
-            ['-e', '--everything'].includes(x.toLowerCase())
-          ) &&
-          !item.Item
-        )
-          continue
+        for (const item of result.roblox.Item) {
+          if (
+            !process.argv.some((x) =>
+              ['-e', '--everything'].includes(x.toLowerCase())
+            ) &&
+            !item.Item
+          )
+            continue
 
-        if (!existsSync(`${folderPath}/${item['$'].class}`)) {
-          mkdirSync(`${folderPath}/${item['$'].class}`)
+          if (!existsSync(`${folderPath}/${item['$'].class}`)) {
+            mkdirSync(`${folderPath}/${item['$'].class}`)
+          }
+
+          if (item.Item) doItems(item.Item, `${folderPath}/${item['$'].class}`)
         }
 
-        if (item.Item) doItems(item.Item, `${folderPath}/${item['$'].class}`)
+        process.exit()
       }
 
-      process.exit()
+      if (existsSync(`${folderPath}/armato.config.json`)) {
+        createInterface(process.stdin, process.stdout).question(
+          '\n\tARMATO config file exists, override current project (Y/n)?',
+          (answer) => {
+            // if user ansers yes to override
+            if (['y', ''].includes(answer.trim().toLowerCase())) {
+              const files = readdirSync(folderPath)
+
+              for (const file of files) {
+                unlinkSync(`${folderPath}/${file}`)
+              }
+
+              main()
+            }
+          }
+        )
+      }
     })
   }
 }
