@@ -1,7 +1,7 @@
 const { parse } = require('path')
 
-const slash = require('../slash')
-const { get, update } = require('../tree')
+const slash = require('../../slash')
+const { get, update } = require('../../tree')
 
 module.exports = (dirPath) => {
   let { dir, name, ext } = parse(dirPath.replace(slash(process.cwd()), ''))
@@ -11,9 +11,9 @@ module.exports = (dirPath) => {
 
   if (item) {
     try {
-      itemJSExt = require('../extensions/' + ext.substr(1))
+      itemJSExt = require('../../extensions/' + ext.substr(1))
     } catch {
-      itemJSExt = require('../extensions/_default')
+      itemJSExt = require('../../extensions/_default')
     }
 
     if (itemJSExt) {

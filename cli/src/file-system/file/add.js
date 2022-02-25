@@ -1,8 +1,8 @@
 const { parse, dirname } = require('path')
 const { readdirSync } = require('fs')
 
-const slash = require('../slash')
-const { push, get, update } = require('../tree')
+const slash = require('../../slash')
+const { push, get, update } = require('../../tree')
 
 module.exports = (dirPath) => {
   let { dir, name, ext } = parse(dirPath.replace(slash(process.cwd()), ''))
@@ -14,9 +14,9 @@ module.exports = (dirPath) => {
     let itemJSExt
 
     try {
-      itemJSExt = require('../extensions/' + ext.substr(1))
+      itemJSExt = require('../../extensions/' + ext.substr(1))
     } catch {
-      itemJSExt = require('../extensions/_default')
+      itemJSExt = require('../../extensions/_default')
     }
 
     if (itemJSExt) {
@@ -42,9 +42,9 @@ module.exports = (dirPath) => {
       let itemJSExt
 
       try {
-        itemJSExt = require('../extensions/' + ext.substr(1))
+        itemJSExt = require('../../extensions/' + ext.substr(1))
       } catch {
-        itemJSExt = require('../extensions/_default')
+        itemJSExt = require('../../extensions/_default')
       }
 
       if (itemJSExt) {

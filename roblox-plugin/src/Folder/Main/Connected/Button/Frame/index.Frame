@@ -1,0 +1,83 @@
+{
+	"Active": "false",
+	"AutoLocalize": "true",
+	"ClipsDescendants": "false",
+	"Draggable": "false",
+	"Selectable": "false",
+	"Visible": "true",
+	"AnchorPoint": {
+		"X": [
+			"0.5"
+		],
+		"Y": [
+			"0.5"
+		]
+	},
+	"AutomaticSize": "0",
+	"BorderMode": "0",
+	"SizeConstraint": "0",
+	"Style": "0",
+	"BackgroundColor3": {
+		"R": [
+			"0.180392161"
+		],
+		"G": [
+			"0.180392161"
+		],
+		"B": [
+			"0.180392161"
+		]
+	},
+	"BorderColor3": {
+		"R": [
+			"0.105882362"
+		],
+		"G": [
+			"0.164705887"
+		],
+		"B": [
+			"0.207843155"
+		]
+	},
+	"BackgroundTransparency": "0",
+	"Rotation": "0",
+	"BorderSizePixel": "1",
+	"LayoutOrder": "0",
+	"ZIndex": "1",
+	"Name": "Frame",
+	"NextSelectionDown": "null",
+	"NextSelectionLeft": "null",
+	"NextSelectionRight": "null",
+	"NextSelectionUp": "null",
+	"RootLocalizationTable": "null",
+	"SelectionImageObject": "null",
+	"Position": {
+		"XS": [
+			"0.5"
+		],
+		"XO": [
+			"0"
+		],
+		"YS": [
+			"0.5"
+		],
+		"YO": [
+			"0"
+		]
+	},
+	"Size": {
+		"XS": [
+			"1"
+		],
+		"XO": [
+			"-4"
+		],
+		"YS": [
+			"1"
+		],
+		"YO": [
+			"-4"
+		]
+	},
+	"SourceAssetId": "-1"
+}

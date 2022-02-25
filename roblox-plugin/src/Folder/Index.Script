@@ -1,0 +1,9 @@
+local plugin = plugin or getfenv().PluginManager():CreatePlugin()
+
+local toolbar = plugin:CreateToolbar("ARMATO")
+local button = toolbar:CreateButton("Open ARMATO", "Open the ARMATO plugin", "rbxassetid://8735578376")
+local dock = plugin:CreateDockWidgetPluginGui('ARMATO', DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Right, true, true))
+
+dock.Title = 'ARAMTO'
+
+script.Parent.Main.Parent = dock

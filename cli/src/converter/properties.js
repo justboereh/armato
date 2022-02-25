@@ -1,3 +1,5 @@
+const Num = (x) => (!isNaN(Number(x)) ? Number(x) : x)
+const Bool = (x) => (x === 'false' ? false : x === 'true' ? true : x)
 
 module.exports = (properties) => {
   const returnee = {}
@@ -10,10 +12,25 @@ module.exports = (properties) => {
 
       let value = prop['_']
 
-      if (!prop['_']) {
+      if (!value) {
+        returnee[prop['$'].name] = {}
+
+        for (const propkey in prop) {
+          if (!prop.hasOwnProperty(propkey) || propkey === '$') continue
+
+          value = prop[propkey]
+
+          if (prop[propkey] instanceof Array && prop[propkey].length === 1) {
+            value = prop[propkey][0]
+          }
+
+          returnee[prop['$'].name][propkey] = Bool(Num(value))
+        }
+
+        continue
       }
 
-      returnee[prop['$'].name] = value
+      returnee[prop['$'].name] = Bool(Num(value))
     }
   }
 

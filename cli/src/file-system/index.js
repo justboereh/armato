@@ -2,11 +2,11 @@ const chokidar = require('chokidar')
 
 const slash = require('../slash')
 
-const fsAdd = require('./add')
-const fsAddDir = require('./addDir')
-const fsChange = require('./change')
-const fsUnlink = require('./unlink')
-const fsUnlinkDir = require('./unlinkDir')
+const fsAdd = require('./file/add')
+const fsChange = require('./file/change')
+const fsUnlink = require('./file/unlink')
+const fsAddDir = require('./dir/add')
+const fsUnlinkDir = require('./dir/unlink')
 
 const ignored = [slash(process.cwd()) + '/armato.config.json']
 

@@ -3,9 +3,9 @@ const { readdirSync } = require('fs')
 
 const { isEqual } = require('lodash')
 
-const slash = require('../slash')
-const { push, get } = require('../tree')
-const logs = require('../logs')
+const slash = require('../../slash')
+const { push, get } = require('../../tree')
+const logs = require('../../logs')
 
 const ignoreTreeItems = [
   {
@@ -45,9 +45,9 @@ module.exports = (dirPath) => {
         let itemJSExt
 
         try {
-          itemJSExt = require('../extensions/' + ext.substr(1))
+          itemJSExt = require('../../extensions/' + ext.substr(1))
         } catch {
-          itemJSExt = require('../extensions/_default')
+          itemJSExt = require('../../extensions/_default')
         }
 
         if (itemJSExt) {

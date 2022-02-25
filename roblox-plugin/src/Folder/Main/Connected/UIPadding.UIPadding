@@ -1,0 +1,36 @@
+{
+	"Name": "UIPadding",
+	"PaddingBottom": {
+		"S": [
+			"0"
+		],
+		"O": [
+			"0"
+		]
+	},
+	"PaddingLeft": {
+		"S": [
+			"0"
+		],
+		"O": [
+			"4"
+		]
+	},
+	"PaddingRight": {
+		"S": [
+			"0"
+		],
+		"O": [
+			"4"
+		]
+	},
+	"PaddingTop": {
+		"S": [
+			"0"
+		],
+		"O": [
+			"0"
+		]
+	},
+	"SourceAssetId": "-1"
+}

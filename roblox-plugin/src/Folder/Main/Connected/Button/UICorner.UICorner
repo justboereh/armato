@@ -1,0 +1,12 @@
+{
+	"CornerRadius": {
+		"S": [
+			"0"
+		],
+		"O": [
+			"8"
+		]
+	},
+	"Name": "UICorner",
+	"SourceAssetId": "-1"
+}

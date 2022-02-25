@@ -1,0 +1,120 @@
+{
+	"Active": "true",
+	"AutoButtonColor": "true",
+	"AutoLocalize": "true",
+	"ClipsDescendants": "false",
+	"Draggable": "false",
+	"Modal": "false",
+	"RichText": "false",
+	"Selectable": "true",
+	"Selected": "false",
+	"TextScaled": "false",
+	"TextWrapped": "false",
+	"Visible": "true",
+	"AnchorPoint": {
+		"X": [
+			"0"
+		],
+		"Y": [
+			"0"
+		]
+	},
+	"AutomaticSize": "0",
+	"BorderMode": "0",
+	"Font": "3",
+	"SizeConstraint": "0",
+	"Style": "0",
+	"TextTruncate": "0",
+	"TextXAlignment": "2",
+	"TextYAlignment": "1",
+	"BackgroundColor3": {
+		"R": [
+			"1"
+		],
+		"G": [
+			"0.113725491"
+		],
+		"B": [
+			"0.145098045"
+		]
+	},
+	"BorderColor3": {
+		"R": [
+			"0.105882362"
+		],
+		"G": [
+			"0.164705887"
+		],
+		"B": [
+			"0.207843155"
+		]
+	},
+	"TextColor3": {
+		"R": [
+			"0"
+		],
+		"G": [
+			"0"
+		],
+		"B": [
+			"0"
+		]
+	},
+	"TextStrokeColor3": {
+		"R": [
+			"0"
+		],
+		"G": [
+			"0"
+		],
+		"B": [
+			"0"
+		]
+	},
+	"BackgroundTransparency": "0",
+	"LineHeight": "1",
+	"Rotation": "0",
+	"TextSize": "1",
+	"TextStrokeTransparency": "1",
+	"TextTransparency": "1",
+	"BorderSizePixel": "1",
+	"LayoutOrder": "2",
+	"MaxVisibleGraphemes": "-1",
+	"ZIndex": "1",
+	"Name": "Button",
+	"NextSelectionDown": "null",
+	"NextSelectionLeft": "null",
+	"NextSelectionRight": "null",
+	"NextSelectionUp": "null",
+	"RootLocalizationTable": "null",
+	"SelectionImageObject": "null",
+	"Position": {
+		"XS": [
+			"0.600000024"
+		],
+		"XO": [
+			"0"
+		],
+		"YS": [
+			"0"
+		],
+		"YO": [
+			"0"
+		]
+	},
+	"Size": {
+		"XS": [
+			"0.400000006"
+		],
+		"XO": [
+			"0"
+		],
+		"YS": [
+			"1"
+		],
+		"YO": [
+			"0"
+		]
+	},
+	"SourceAssetId": "-1"
+}

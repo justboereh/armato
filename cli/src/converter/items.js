@@ -1,5 +1,6 @@
 const { existsSync, mkdirSync, writeFileSync, readFileSync } = require('fs')
 const jsonFormat = require('json-format')
+const sanitize = require('sanitize-filename')
 
 const properties = require('./properties')
 
@@ -12,9 +13,14 @@ module.exports = doitems = (items, path) => {
       item['$'].class
     )
 
-    const props = properties(item.Properties)
+    const props = {
+      ...properties(item.Properties),
+      referent: item['$'].referent,
+    }
     const filepath = (withClass) =>
-      `${path}/${props.Name}${withClass ? '.' + item['$'].class : ''}`
+      `${path}/${sanitize(props.Name)}${
+        withClass ? '.' + item['$'].class : ''
+      }`
 
     // if instance has no children
     if (!item.Item) {
@@ -25,11 +31,7 @@ module.exports = doitems = (items, path) => {
       }
 
       if (!isFolder && existsSync(filepath(true))) {
-        let filedata = JSON.parse(
-          readFileSync(filepath(true), {
-            encoding: 'utf8',
-          })
-        )
+        let filedata = JSON.parse(readFileSync(filepath(true), 'utf8'))
 
         if (!(filedata instanceof Array)) {
           filedata = [filedata]

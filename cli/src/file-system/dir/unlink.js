@@ -1,7 +1,7 @@
 const { parse } = require('path')
 
-const slash = require('../slash')
-const { get, remove } = require('../tree')
+const slash = require('../../slash')
+const { get, remove } = require('../../tree')
 
 module.exports = (dirPath) => {
   const { dir, name } = parse(slash(dirPath.replace(process.cwd(), '')))

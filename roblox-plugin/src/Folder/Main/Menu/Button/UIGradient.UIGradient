@@ -1,0 +1,16 @@
+{
+	"Color": "0 1 0.576471 0.117647 0 1 1 0.113725 0.145098 0 ",
+	"Enabled": "true",
+	"Name": "UIGradient",
+	"Offset": {
+		"X": [
+			"0"
+		],
+		"Y": [
+			"0"
+		]
+	},
+	"Rotation": "0",
+	"SourceAssetId": "-1",
+	"Transparency": "0 0 0 1 0 0 "
+}

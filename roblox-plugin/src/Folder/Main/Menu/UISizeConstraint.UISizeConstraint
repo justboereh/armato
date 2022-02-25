@@ -1,0 +1,20 @@
+{
+	"MaxSize": {
+		"X": [
+			"INF"
+		],
+		"Y": [
+			"40"
+		]
+	},
+	"MinSize": {
+		"X": [
+			"0"
+		],
+		"Y": [
+			"0"
+		]
+	},
+	"Name": "UISizeConstraint",
+	"SourceAssetId": "-1"
+}

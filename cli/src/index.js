@@ -2,6 +2,7 @@ const path = require('path')
 const { existsSync, writeFileSync, mkdirSync } = require('fs')
 
 const server = require('./server')
+const build = require('./build/build')
 const { startingDirectory, startingFiles } = require('./starting')
 const converter = require('./converter/index')
 
@@ -52,8 +53,14 @@ switch (process.argv[2]) {
 
     break
 
-  default:
-    if (existsSync(process.argv[2])) converter()
+  case 'build':
+    build()
 
+    break
+
+  default:
+    if (!existsSync(process.argv[2])) process.exit()
+
+    converter()
     break
 }

@@ -8,6 +8,8 @@ const {
   writeFileSync,
   readdirSync,
   unlinkSync,
+  rmSync,
+  lstatSync,
 } = require('fs')
 const nativeDialog = require('native-file-dialog')
 
@@ -27,56 +29,89 @@ module.exports = () => {
     }
   }
 
-  // if ext of file is .rbxlx
-  if (ext === '.rbxlx') {
-    let filedata = readFileSync(process.argv[2], {
-      encoding: 'utf8',
-    })
+  // if ext of file is .rbxlx or .rbxmx
+  if (!['.rbxlx', '.rbxmx'].includes(ext)) process.exit()
 
-    const index = filedata.indexOf('<SharedStrings>')
+  let filedata = readFileSync(process.argv[2], 'utf8')
 
-    if (index) filedata = filedata.slice(0, index)
+  const index = filedata.indexOf('<SharedStrings>')
+  filedata = filedata.replace(
+    /<BinaryString name="PhysicsGrid"><\!\[CDATA\[[.\w/\n]*=]]><\/BinaryString>/,
+    ''
+  )
 
+  if (index !== -1) {
+    filedata = filedata.slice(0, index)
     filedata += '</roblox>'
+  }
 
-    parseString(filedata, (err, result) => {
-      if (err) return
+  parseString(filedata, (err, result) => {
+    if (err) process.exit()
 
-      const folderPath = slash(nativeDialog.folder_dialog())
+    const folderPath = slash(nativeDialog.folder_dialog())
 
-      if (!existsSync(folderPath)) process.exit()
+    if (!existsSync(folderPath)) process.exit()
 
-      function main() {
-        writeFileSync(`${folderPath}/armato.config.json`, '{}')
+    function main() {
+      mkdirSync(`${folderPath}/.armato`)
+      writeFileSync(`${folderPath}/.armato/config.json`, '{}')
 
-        for (const item of result.roblox.Item) {
-          if (
-            !process.argv.some((x) =>
-              ['-e', '--everything'].includes(x.toLowerCase())
-            ) &&
-            !item.Item
-          )
-            continue
+      process.stdout.write('\tCreating directories and files ...')
 
-          if (!existsSync(`${folderPath}/${item['$'].class}`)) {
-            mkdirSync(`${folderPath}/${item['$'].class}`)
-          }
+      process.once('exit', () => {
+        process.stdout.write('\r\x1b[K')
+        process.stdout.write('\tDirectories and files created ✓')
+      })
 
-          if (item.Item) doItems(item.Item, `${folderPath}/${item['$'].class}`)
+      for (const item of result.roblox.Item) {
+        if (
+          !process.argv.some((x) =>
+            ['-e', '--everything'].includes(x.toLowerCase())
+          ) &&
+          !item.Item
+        )
+          continue
+
+        if (!existsSync(`${folderPath}/${item['$'].class}`)) {
+          mkdirSync(`${folderPath}/${item['$'].class}`)
         }
 
-        process.exit()
+        if (item.Item) doItems(item.Item, `${folderPath}/${item['$'].class}`)
       }
 
-      if (existsSync(`${folderPath}/armato.config.json`)) {
-        createInterface(process.stdin, process.stdout).question(
+      process.exit()
+    }
+
+    switch (
+      existsSync(`${folderPath}/.armato`) &&
+      isDirectory(`${folderPath}/.armato`)
+    ) {
+      case true:
+        const rl = createInterface(process.stdin, process.stdout)
+
+        rl.question(
           '\n\tARMATO config file exists, override current project (Y/n)?',
           (answer) => {
             // if user ansers yes to override
             if (['y', ''].includes(answer.trim().toLowerCase())) {
               const files = readdirSync(folderPath)
 
+              const isDirectory = (path) => {
+                try {
+                  return lstatSync(path).isDirectory()
+                } catch (error) {}
+              }
+
               for (const file of files) {
+                if (isDirectory(`${folderPath}/${file}`)) {
+                  rmSync(`${folderPath}/${file}`, {
+                    recursive: true,
+                    force: true,
+                  })
+
+                  continue
+                }
+
                 unlinkSync(`${folderPath}/${file}`)
               }
 
@@ -84,7 +119,13 @@ module.exports = () => {
             }
           }
         )
-      }
-    })
-  }
+
+        break
+
+      default:
+        main()
+
+        break
+    }
+  })
 }

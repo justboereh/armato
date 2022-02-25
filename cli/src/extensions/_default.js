@@ -6,9 +6,7 @@ module.exports = ({ relativePath, dirPath, name, ext }, isIndex) => {
   const toReturn = []
 
   const parsedData = JSON.parse(
-    readFileSync(`${dirPath}/${isIndex ? 'index' : name}${ext}`, {
-      encoding: 'utf8',
-    })
+    readFileSync(`${dirPath}/${isIndex ? 'index' : name}${ext}`, 'utf8')
   )
   const returnData = {
     Path: slash(relativePath),

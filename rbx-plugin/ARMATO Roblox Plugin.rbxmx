@@ -1,0 +1,28 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Folder" referent="RBX7D29DAA848444E84BCCCA549969994D0">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">ARMATO Roblox Plugin</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+		<Item class="Script" referent="RBXE555162260D54A67BB4D9318A4138E85">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Main</string>
+				<string name="ScriptGuid">{74A19BF2-077C-44AB-9CB7-3144E734CFC2}</string>
+				<ProtectedString name="Source"><![CDATA[local toolbar = plugin:CreateToolbar("ARMATO")
+
+local isOpened = plugin:GetSetting('isOpened')
+
+local button = toolbar:CreateButton("Open ARMATO", "Open the ARMATO plugin", "http://www.roblox.com/asset/?id=8735578376")]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

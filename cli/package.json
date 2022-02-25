@@ -1,12 +1,13 @@
 {
   "name": "armato",
   "version": "1.0.2021",
-  "description": "A roblox management tool",
+  "description": "A Roblox MAnagement TOol",
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
     "init": "cd test && node ../ init",
     "serve": "cd test && node ../ serve",
+    "build": "cd test && node ../ build",
     "con": "node . \"C:/Users/boere/Documents/Visual Studio Code Projects/armato/cli/dist/Classic Baseplate.rbxlx\"",
     "pkg": "pkg --compress Brotli --out-path dist ."
   },
@@ -14,11 +15,15 @@
   "license": "MIT",
   "dependencies": {
     "chokidar": "^3.5.3",
+    "directory-tree": "^3.2.2",
     "express": "^4.17.2",
     "json-format": "^1.0.1",
     "lodash": "^4.17.21",
     "native-file-dialog": "^0.2.0",
     "portfinder": "^1.0.28",
+    "sanitize-filename": "^1.6.3",
+    "xml-formatter": "^2.6.1",
+    "xml-js": "^1.6.11",
     "xml2js": "^0.4.23"
   }
 }
